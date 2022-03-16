@@ -1,0 +1,26 @@
+@use "./Assets/fonts.scss" as font;
+@use "./Assets/theme.scss" as theme;
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.small-text {
+  @extend .font-medium;
+  font-size: theme.$text-smaller-size;
+}
+
+.medium-text {
+  @extend .font-medium;
+  font-size: theme.$text-medium-size;
+}
+
+.huge-text {
+  @extend .font-medium;
+  font-size: theme.$text-big-size;
+}

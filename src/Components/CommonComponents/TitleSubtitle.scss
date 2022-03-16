@@ -1,0 +1,7 @@
+@use "../../Assets/theme.scss" as theme;
+
+.title-subtitle {
+  .subtitle {
+    color: theme.$text-ternary-color;
+  }
+}

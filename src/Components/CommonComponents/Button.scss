@@ -1,0 +1,13 @@
+@use "../../Assets/theme.scss" as theme;
+.button {
+  background-color: theme.$primary-color;
+  color: theme.$text-secondary-color;
+  width: 100%;
+  padding: 0.625rem 0;
+  &:hover {
+    background-color: theme.$secondary-color;
+  }
+  &:focus{
+    box-shadow: none;
+  }
+}
