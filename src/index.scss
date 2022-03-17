@@ -24,3 +24,7 @@ body {
   @extend .font-medium;
   font-size: theme.$text-big-size;
 }
+
+.optional {
+  opacity: 0.3;
+}

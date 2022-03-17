@@ -4,7 +4,14 @@ import RBForm from "react-bootstrap/Form";
 
 import "./TextField.scss";
 
-function TextField({ type, onChange, value, className, placeholder }) {
+function TextField({
+  type,
+  onChange,
+  value,
+  className,
+  placeholder,
+  disabled,
+}) {
   const styleClass = "text-field small-text " + (className || "");
   return (
     <RBForm.Control
@@ -13,6 +20,7 @@ function TextField({ type, onChange, value, className, placeholder }) {
       value={value}
       className={styleClass}
       placeholder={placeholder}
+      disabled={disabled}
     />
   );
 }
@@ -23,6 +31,7 @@ TextField.propTypes = {
   value: PropTypes.string,
   className: PropTypes.string,
   placeholder: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 TextField.defaultProps = {
@@ -31,6 +40,7 @@ TextField.defaultProps = {
   value: "",
   className: "",
   placeholder: "",
+  disabled: false,
 };
 
 export default TextField;

@@ -1,0 +1,17 @@
+@use "../../Assets/theme.scss" as theme;
+@use "../../Assets/fonts.scss" as fonts;
+
+.card-with-icon {
+  border-radius: 0.45rem;
+  cursor: pointer;
+  .title {
+    @extend .font-bold;
+  }
+  .text {
+    @extend .font-light;
+    font-size: theme.$text-smaller-size;
+  }
+}
+.card-active {
+  border: 1px solid theme.$primary-color;
+}
