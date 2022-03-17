@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -13,14 +13,19 @@ import EdenPlan from "./Components/EdenPlan/EdenPlan";
 import Congratulations from "./Components/Congratulations/Congratulations";
 
 import { STEPPER_STEPS } from "./Constants";
+import { initialState, reducer } from "./Components/Reducer/reducer";
 
 function App() {
-  const [activeStep, setActiveStep] = useState(0);
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const { personalInfo, workspaceInfo, edenPlan, activeStep } = state;
 
   const onCreateWorkspaceClick = () => {
-    setActiveStep(
-      activeStep < STEPPER_STEPS.length - 1 ? activeStep + 1 : activeStep
-    );
+    dispatch({
+      type: "UPDATE_STEPPER",
+      payload:
+        activeStep < STEPPER_STEPS.length - 1 ? activeStep + 1 : activeStep,
+    });
   };
 
   const getButtonTitle = () =>
@@ -34,10 +39,17 @@ function App() {
       </Row>
       <Row className="justify-content-center">
         <Col sm={8} md={5} lg={5} xl={4}>
-          {activeStep === 0 && <PersonalInfo />}
-          {activeStep === 1 && <WorkspaceInfo />}
-          {activeStep === 2 && <EdenPlan />}
-          {activeStep === 3 && <Congratulations />}
+          {activeStep === 0 && (
+            <PersonalInfo data={personalInfo} dispatch={dispatch} />
+          )}
+          {activeStep === 1 && (
+            <WorkspaceInfo data={workspaceInfo} dispatch={dispatch} />
+          )}
+          {activeStep === 2 && <EdenPlan data={edenPlan} dispatch={dispatch} />}
+
+          {activeStep === 3 && (
+            <Congratulations name={personalInfo.displayName} />
+          )}
         </Col>
       </Row>
       <Row className="justify-content-center py-3">
